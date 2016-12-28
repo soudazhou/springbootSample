@@ -1,5 +1,6 @@
 server:
   port: 8082
   context-path: /sample
-refNo: 1
-content: "my refNo = ${refNo}"
+car:
+  name: "BMW"
+  speed: 5

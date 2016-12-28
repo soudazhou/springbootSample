@@ -2,6 +2,7 @@ package com.wen;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,8 +16,8 @@ public class HelloController {
     @Autowired
     private Car car;
 
-    @RequestMapping(value = {"/hello","/hi"}, method = RequestMethod.GET)
-    public String speak() {
-        return "Car name: "+car.getName()+"  Car Speed: "+car.getSpeed();
+    @RequestMapping(value = {"/hello","/hi/{id}"}, method = RequestMethod.GET)
+    public String speak(@PathVariable("id") Integer id) {
+        return "ID: "+id+" Car name: "+car.getName()+"  Car Speed: "+car.getSpeed();
     }
 }

@@ -14,7 +14,7 @@ public class HelloController {
     private Car car;
 
     @RequestMapping(value = {"/hello","/hi"}, method = RequestMethod.GET)
-    public String speak(@RequestParam("id") Integer myId) {
+    public String speak(@RequestParam(value = "id", required = false, defaultValue = "0") Integer myId) {
         return "ID: "+myId+" Car name: "+car.getName()+"  Car Speed: "+car.getSpeed();
     }
 }

@@ -13,8 +13,11 @@ public class HelloController {
     @Value("${refNo}")
     private int refNo;
 
+    @Value("${content}")
+    private String content;
+
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String speak() {
-        return "Hello Spring Boot, refNo = "+refNo;
+        return "Hello Spring Boot, "+content;
     }
 }

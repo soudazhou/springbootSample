@@ -13,7 +13,8 @@ public class HelloController {
     @Autowired
     private Car car;
 
-    @RequestMapping(value = {"/hello","/hi"}, method = RequestMethod.GET)
+    //@RequestMapping(value = {"/hello","/hi"}, method = RequestMethod.GET)
+    @GetMapping(value = {"/hello","/hi"})
     public String speak(@RequestParam(value = "id", required = false, defaultValue = "0") Integer myId) {
         return "ID: "+myId+" Car name: "+car.getName()+"  Car Speed: "+car.getSpeed();
     }

@@ -1,10 +1,7 @@
 package com.wen;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,7 +19,7 @@ public class CarController {
         return carRepo.findAll();
     }
 
-    @PostMapping(value ="/Cars")
+    @PostMapping(value ="/cars")
     public Car addCar(@RequestParam("name") String name,
                          @RequestParam("speed") Integer speed) {
         Car car = new Car();
@@ -32,5 +29,25 @@ public class CarController {
         return car;
     }
 
+    @GetMapping(value = "cars/{id}")
+    Car findOneCar(@PathVariable("id") Integer id) {
+        return carRepo.findOne(id);
+    }
+
+    @PutMapping(value = "cars/{id}")
+    Car updateCar(@PathVariable("id") Integer id,
+                              @RequestParam("name") String name,
+                              @RequestParam("speed") Integer speed) {
+        Car car = new Car();
+        car.setId(id);
+        car.setName(name);
+        car.setSpeed(speed);
+        return carRepo.save(car);
+    }
+
+    @DeleteMapping(value = "cars/{id}")
+    void deleteCar(@PathVariable("id") Integer id) {
+        carRepo.delete(id);
+    }
 
 }

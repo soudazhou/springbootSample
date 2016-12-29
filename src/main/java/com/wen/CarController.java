@@ -14,6 +14,9 @@ public class CarController {
     @Autowired
     CarRepo carRepo;
 
+    @Autowired
+    CarService carService;
+
     @GetMapping(value = "/allCars")
     public List<Car> getAllCars() {
         return carRepo.findAll();
@@ -48,6 +51,11 @@ public class CarController {
     @DeleteMapping(value = "cars/{id}")
     void deleteCar(@PathVariable("id") Integer id) {
         carRepo.delete(id);
+    }
+
+    @PostMapping(value ="/twocars")
+    void addTwoCars() {
+        carService.addTwoCars();
     }
 
 }
